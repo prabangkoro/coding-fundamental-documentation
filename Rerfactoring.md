@@ -6,46 +6,20 @@ Main reference: [Refactoring Guru](https://refactoring.guru/refactoring/techniqu
 
 Make your methods healthy and easy to maintain. Much of refactoring is devoted to correctly composing methods. In most cases, excessively long methods are the root of all evil. The vagaries of code inside these methods conceal the execution logic and make the method extremely hard to understand – and even harder to change.
 
-### **Extract Method**
+## **Moving Features between Objects**
 
-#### Problem
+Even if you have distributed functionality among different classes in a less-than-perfect way, there is still hope.
 
-You have a code fragment that can be grouped together.
+These refactoring techniques show how to safely move functionality between classes, create new classes, and hide implementation details from public access.
 
-```java
-void printOwing() {
-  printBanner();
+## **Simplifying Conditional Expressions**
 
-  //print details
-  System.out.println("name: " + name);
-  System.out.println("amount: " + getOutstanding());
-}
-```
+Conditionals tend to get more and more complicated in their logic over time, and there are yet more techniques to combat this as well.
 
-#### Solution
+## **Simplifying Method Calls**
 
-Move this code to a separate new method (or function) and replace the old code with a call to the method.
+These techniques make method calls simpler and easier to understand. This, in turn, simplifies the interfaces for interaction between classes.
 
-```java
-void printOwing() {
-  printBanner();
-  printDetails(getOutstanding());
-}
+## **Dealing with Generalization**
 
-void printDetails(double outstanding) {
-  System.out.println("name: " + name);
-  System.out.println("amount: " + outstanding);
-}
-```
-
-#### Why refactoring???
-
-The more lines found in a method, the harder it is to figure out what the method does. This is the main reason for this refactoring.
-
-Besides eliminating rough edges in your code, extracting methods is also a step in many other refactoring approaches.
-
-#### Benefits
-
-* More readable code! Be sure to give the new method a name that describes the method's purpose: `createOrder()`, `renderCustomerInfo()`, etc.
-* Less code duplication. Often the code that is found in a method can be reused in other places in your program. So you can replace duplicates with calls to your new method.
-* Isolates independent parts of code, meaning that errors are less likely (such as if the wrong variable is modified).
+Abstraction has its own group of refactoring techniques, primarily associated with moving functionality along the class inheritance hierarchy, creating new classes and interfaces, and replacing inheritance with delegation and vice versa.
